@@ -1,0 +1,21 @@
+$primary: #78C0E0;
+$secondary: #267EB1;
+$tercery: #0E0E52;
+
+html {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(180deg, $primary 0%, #000000 100%);
+}
+
+header nav {
+    background-color: $tercery;
+}
+
+header nav a.navbar-brand {
+    color: #ffffff;
+}
+
+@import "~bootstrap/scss/bootstrap";
