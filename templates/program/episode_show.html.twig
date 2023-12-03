@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ program.title }} - Saison {{ season.number }} - Episode {{ episode.number }}{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-between align-items-center m-4">
+        <h1 class="display-4"><strong>"{{ program.title }}"</strong></h1>
+        <a class="btn btn-primary" href="{{ path('program_season_show', { program: program.id, season: season.id }) }}">Retour</a>
+    </div>
+    <h3 class="mx-5 text-muted">Saison {{ season.number }}, Episode {{ episode.number }}</h3>
+    <div class="container">
+        <h2 class="text-center my-3 mb-5 display-4"><strong>{{ episode.title }}</strong></h2>
+        <p class="text-center mx-5 display-5">{{ episode.synopsis }}</p>
+    </div>
+
+{% endblock %}

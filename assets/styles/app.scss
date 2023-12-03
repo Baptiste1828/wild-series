@@ -15,7 +15,7 @@ header {
 }
 
 body {
-    background: linear-gradient(180deg, $primary 0%, #000000 100%);
+    background: linear-gradient(180deg, $primary 0%, #000e57 100%);
     background-attachment: fixed;
 }
 
@@ -38,4 +38,14 @@ header nav {
 
 .list-category {
     align-items: center;
+}
+
+.list-episode {
+    max-height: 110.391px;
+}
+
+.episode-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
 }

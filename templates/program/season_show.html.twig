@@ -11,19 +11,18 @@
         </div>
         <h3 class="row card-subtitle text-muted mx-4">{{ season.year }}</h3>
         <p class="row">{{ season.description }}</p>
+        <div class="list-group">
 
         {% for episode in season.episodes %}
 
-        <div class="row mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title">Episode {{ episode.number }} - {{ episode.title }}</h2>
-                    <p class="card-text">{{ episode.synopsis }}</p>
-                </div>
-            </div>
-        </div>
+            <a class="list-group-item row py-4 my-3 list-group-item-action list-group-item-primary rounded list-episode" href="{{ path('program_episode_show', { programId: program.id, seasonId: season.id, episodeId: episode.id }) }}">
+                <h2 class="card-title">Episode {{ episode.number }} - {{ episode.title }}</h2>
+                <p class="card-text episode-text">{{ episode.synopsis }}</p>
+            </a>
 
         {% endfor %}
+
+        </div>
     </div>
 
 {% endblock %}
