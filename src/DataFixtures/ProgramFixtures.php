@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use function Symfony\Component\String\u;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -25,6 +26,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setSynopsis($data[1]);
             $program->setCategory($this->getReference($data[2]));
             $manager->persist($program);
+            $this->addReference('program_' . u($data[0])->replace(' ', '_'), $program);
         }
 
         $manager->flush();

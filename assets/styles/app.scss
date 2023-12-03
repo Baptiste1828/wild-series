@@ -1,25 +1,41 @@
+@import "~bootstrap/scss/bootstrap";
+
 $primary: #78C0E0;
-$secondary: #267EB1;
-$tercery: #0E0E52;
+//$secondary: #267EB1;
+$secondary: #449DD1;
+//$tercery: #0E0E52;
+$tercery: #150578;
 
 html {
     height: 100%;
 }
 
+header {
+    height: 56px;
+}
+
 body {
     background: linear-gradient(180deg, $primary 0%, #000000 100%);
+    background-attachment: fixed;
 }
 
 header nav {
     background-color: $tercery;
 }
 
-header nav a.navbar-brand {
+.navbar-brand, .nav-link {
     color: #ffffff;
 }
 
-a.nav-link {
-    color: #ffffff;
+.card {
+    background-color: $secondary;
 }
 
-@import "~bootstrap/scss/bootstrap";
+.list-season {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.list-category {
+    align-items: center;
+}

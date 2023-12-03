@@ -3,17 +3,28 @@
 {% block title %}Série #{{ category_name }}{% endblock %}
 
 {% block body %}
-    {% for program in programs %}
-        <div>
-            <h2>{{ loop.index }} / {{ program.title }}</h2>
-            <p>{{ program.synopsis }}</p>
-            <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
+
+    <div class="d-flex justify-content-between align-items-center mx-3 my-3">
+        <h1 ><strong>Catégorie: {{ category_name }}</strong></h1>
+        <div >
+            <a class="btn btn-primary mx-3" href="{{ path('category_index') }}">Retour à la liste des catégories</a>
         </div>
+    </div>
+
+    {% for program in programs %}
+
+        <div class="card mx-3 my-3 border border-0">
+            <div class="card-body">
+                <h2 class="card-title">{{ loop.index }} / {{ program.title }}</h2>
+                <p class="card-text">{{ program.synopsis }}</p>
+                <a class="btn btn-primary" href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
+            </div>
+        </div>
+    
     {% else %}
-        Aucune série trouvée.
+
+        <p class="text-center">Aucune série trouvée.</p>
+    
     {% endfor %}
 
-    <a href="{{ path('category_index') }}">
-        Retour à la liste des catégories
-    </a>
 {% endblock %}

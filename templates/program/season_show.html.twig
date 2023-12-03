@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ program.title }} - Saison {{ season.number }}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <h1>"{{ program.title }}" - Saison {{ season.number }}</h1>
+            <a class="btn btn-primary" href="{{ path("program_show", { id: program.id }) }}">Retour</a>
+        </div>
+        <h3 class="row card-subtitle text-muted mx-4">{{ season.year }}</h3>
+        <p class="row">{{ program.synopsis }}</p>
+
+        {% for episode in season.episodes %}
+
+        <div class="row mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Episode {{ episode.number }} - {{ episode.title }}</h2>
+                    <p class="card-text">{{ episode.synopsis }}</p>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}
