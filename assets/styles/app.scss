@@ -37,7 +37,13 @@ header nav {
 }
 
 .list-category {
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
+}
+
+.category {
+    width: 432px;
 }
 
 .list-episode {

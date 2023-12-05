@@ -14,7 +14,7 @@
 
     {% for category in categories %}
 
-        <h3><a class="list-group-item list-group-item-action list-group-item-primary m-4 text-center rounded" style="width: auto;" href="{{ path("category_show", { categoryName: category.name }) }}"><strong>{{ category.name }}</strong></a></h3>
+        <h3 class="category"><a class="list-group-item list-group-item-action list-group-item-primary m-4 text-center rounded category-link" style="width: auto;" href="{{ path("category_show", { categoryName: category.name }) }}"><strong>{{ category.name }}</strong></a></h3>
 
     {% else %}
 
