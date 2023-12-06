@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: SeasonRepository::class)]
 class Season
@@ -17,12 +19,14 @@ class Season
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Assert\Positive(message: 'Le numéro de la série ne peut pas être inférieur ou égal à 0 !')]
     private ?int $number = null;
 
     #[ORM\Column]
     private ?int $year = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: 'La description ne peut pas être vide !')]
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'seasons')]
