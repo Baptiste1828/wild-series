@@ -15,7 +15,8 @@
 
         <div class="card mx-3 my-3 border border-0">
             <div class="card-body">
-                <h2 class="card-title">{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+                <h2 class="card-title"><strong>"{{ program.title }}"</strong></h2>
+                <h3 class="card-subtitle text-muted">{{ program.category.name }}</h3>
                 <p class="card-text">{{ program.synopsis }}</p>
                 <a class="btn btn-primary" href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
             </div>
