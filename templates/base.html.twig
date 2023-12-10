@@ -16,6 +16,15 @@
         <header>
             {% include '_navbar.html.twig' %}
         </header>
+        {% for category, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="d-flex justify-content-start align-items-center m-2">
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
         {% block body %}{% endblock %}
     </body>
 </html>

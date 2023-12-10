@@ -32,7 +32,6 @@ class Program
     private ?string $synopsis = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\Image]
     private ?string $poster = null;
 
     #[ORM\ManyToOne(inversedBy: 'programs')]
