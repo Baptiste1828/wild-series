@@ -15,7 +15,7 @@
 
         <div class="card mx-3 my-3 border border-0">
             <div class="card-body">
-                <h2 class="card-title">{{ loop.index }} / {{ program.title }}</h2>
+                <h2 class="card-title">"{{ program.title }}"</h2>
                 <p class="card-text">{{ program.synopsis }}</p>
                 <a class="btn btn-primary" href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
             </div>
