@@ -12,6 +12,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -28,7 +30,7 @@ class ProgramController extends AbstractController
     }
 
     #[Route('new', name: 'new')]
-    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    public function new(Request $request, MailerInterface $mailer, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $program = new Program();
 
@@ -43,6 +45,14 @@ class ProgramController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'La série a bien été ajouté !');
+
+            $email = (new Email())
+                    ->from($this->getParameter('mailer_from'))
+                    ->to('test@sandbox.smtp.mailtrap.io')
+                    ->subject('Une nouvelle série vient d\'être publiée !')
+                    ->html($this->renderView('program/newProgramEmail.html.twig', ['program' => $program]));
+
+            $mailer->send($email);
 
             return $this->redirectToRoute('program_index');
         }
