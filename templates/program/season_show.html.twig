@@ -7,7 +7,7 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mt-4">
             <h1>"{{ program.title }}" - Saison {{ season.number }}</h1>
-            <a class="btn btn-primary" href="{{ path("program_show", { id: program.id }) }}">Retour</a>
+            <a class="btn btn-primary" href="{{ path("program_show", { slug: program.slug }) }}">Retour</a>
         </div>
         <h3 class="row card-subtitle text-muted mx-4">{{ season.year }}</h3>
         <p class="row">{{ season.description }}</p>
@@ -15,7 +15,7 @@
 
         {% for episode in season.episodes %}
 
-            <a class="list-group-item row py-4 my-3 list-group-item-action list-group-item-primary rounded list-episode" href="{{ path('program_episode_show', { programId: program.id, seasonId: season.id, episodeId: episode.id }) }}">
+            <a class="list-group-item row py-4 my-3 list-group-item-action list-group-item-primary rounded list-episode" href="{{ path('program_episode_show', { programSlug: program.slug, id: season.id, episodeSlug: episode.slug }) }}">
                 <h2 class="card-title">Episode {{ episode.number }} - {{ episode.title }}</h2>
                 <p class="card-text episode-text">{{ episode.synopsis }}</p>
             </a>

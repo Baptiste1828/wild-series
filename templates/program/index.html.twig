@@ -18,7 +18,7 @@
                 <h2 class="card-title"><strong>"{{ program.title }}"</strong></h2>
                 <h3 class="card-subtitle text-muted">{{ program.category.name }}</h3>
                 <p class="card-text">{{ program.synopsis }}</p>
-                <a class="btn btn-primary" href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
+                <a class="btn btn-primary" href="{{ path("program_show", { slug: program.slug }) }}">Voir la fiche</a>
             </div>
         </div>
 

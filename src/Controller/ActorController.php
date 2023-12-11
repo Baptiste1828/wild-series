@@ -18,7 +18,7 @@ class ActorController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', requirements: ['id' => '\d+'], methods: ['GET'], name: 'show')]
+    #[Route('/{slug}', methods: ['GET'], name: 'show')]
     public function show(Actor $actor): Response
     {
         if (!$actor) {

@@ -13,7 +13,7 @@
 
         {% for program in actor.programs %}
 
-            <a class="list-group-item row py-4 my-3 list-group-item-action list-group-item-primary rounded list-program" href="{{ path('program_show', { id: program.id }) }}">
+            <a class="list-group-item row py-4 my-3 list-group-item-action list-group-item-primary rounded list-program" href="{{ path('program_show', { slug: program.slug }) }}">
                 <h2 class="card-title">"{{ program.title }}"</h2>
                 <h4 class="card-subtitle text-muted">{{ program.category.name }}</h4>
                 <p class="card-text episode-text">{{ program.synopsis }}</p>

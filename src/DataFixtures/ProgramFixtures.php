@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use Symfony\Component\String\Slugger\SluggerInterface;
 use function Symfony\Component\String\u;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -18,6 +19,13 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
         ['D\'argent et de sang', 'At least two billion euros embezzled under the nose of the State on the back of environmental rights and casino capitalism. It was ten years ago. But after the epiphany of money came the decadence of blood. A mysterious epidemic of assassinations has struck Paris and its surrounding areas.', 'category_Action'],
     ];
 
+    private SluggerInterface $slugger;
+
+    public function __construct(SluggerInterface $slugger)
+    {
+        $this->slugger = $slugger;
+    }
+
     public function load(ObjectManager $manager): void
     {
         foreach (self::DATAS as $data) {
@@ -25,6 +33,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setTitle($data[0]);
             $program->setSynopsis($data[1]);
             $program->setCategory($this->getReference($data[2]));
+            $program->setSlug($this->slugger->slug($program->getTitle()));
             $manager->persist($program);
             $this->addReference('program_' . u($data[0])->replace(' ', '_'), $program);
         }

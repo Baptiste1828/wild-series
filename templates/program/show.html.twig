@@ -10,7 +10,7 @@
         </div>
         <div class="col m-3 d-flex flex-column" style="width: auto;">
             <h1 class="mt-0">{{ program.title }}</h1>
-            <p>Catégorie : {{ program.category.name }}</p>
+            <p class="text-muted">Catégorie : {{ program.category.name }} - {{ programDuration }}</p>
             <p>{{ program.synopsis }}</p>
             <div class="mt-auto m-3">
                 <a class="btn btn-primary" href="{{ path('program_index') }}">Retour à la liste des programmes</a>
@@ -22,7 +22,7 @@
 
         {% for season in program.seasons %}
 
-            <a class="list-group-item list-group-item-action list-group-item-primary m-5 rounded" style="width: 100px;" href="{{ path('program_season_show', { program: program.id, season: season.id }) }}">Saison {{ season.number }}</a>
+            <a class="list-group-item list-group-item-action list-group-item-primary m-5 rounded" style="width: 100px;" href="{{ path('program_season_show', { slug: program.slug, season: season.id }) }}">Saison {{ season.number }}</a>
 
         {% endfor %}
 
@@ -32,7 +32,7 @@
 
         {% for actor in program.actors %}
 
-            <a class="list-group-item list-group-item-action list-group-item-primary m-5 rounded" style="width: auto;" href="{{ path('actor_show', { id: actor.id }) }}">{{ actor.name }}</a>
+            <a class="list-group-item list-group-item-action list-group-item-primary m-5 rounded" style="width: auto;" href="{{ path('actor_show', { slug: actor.slug }) }}">{{ actor.name }}</a>
 
         {% else %}
 
