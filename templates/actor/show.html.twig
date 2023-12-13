@@ -9,6 +9,7 @@
             <h1>{{ actor.name }}</h1>
             <a class="btn btn-primary" href="{{ path("actor_index") }}">Retour aux acteurs</a>
         </div>
+        <img src="{{ vich_uploader_asset(actor) }}" alt="{{ actor.name }}">
         <div class="list-group">
 
         {% for program in actor.programs %}
